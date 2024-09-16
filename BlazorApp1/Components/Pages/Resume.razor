@@ -1,0 +1,121 @@
+﻿@page "/resume"
+
+@* Стиль страницы *@
+<style>
+    .resume-container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f4f4f9;
+        border-radius: 8px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h1, h2, h3, h4 {
+        color: #333;
+    }
+
+    .contact-info {
+        margin-top: 10px;
+        font-size: 18px;
+    }
+
+    .section-title {
+        background-color: #0078d7;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+
+    .skill-list, .experience-list {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .skill-list li, .experience-list li {
+        margin-bottom: 10px;
+    }
+
+    .experience-item {
+        margin-bottom: 20px;
+    }
+
+    .experience-company {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .experience-date {
+        font-style: italic;
+        color: #666;
+    }
+
+    .education, .certifications {
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="resume-container">
+    <h1>@FullName</h1>
+    <p class="contact-info">
+        📧 @Email <br />
+        📞 @Phone <br />
+        🌐 <a href="@LinkedIn">LinkedIn</a> | <a href="@GitHub">GitHub</a>
+    </p>
+
+    <h2 class="section-title">Позиция</h2>
+    <p>@Position</p>
+
+    <h2 class="section-title">Профессиональное резюме</h2>
+    <p>@Summary</p>
+
+    <h2 class="section-title">Ключевые навыки</h2>
+    <ul class="skill-list">
+        @foreach (var skill in Skills)
+        {
+            <li>@skill</li>
+        }
+    </ul>
+
+    <h2 class="section-title">Опыт работы</h2>
+    
+
+    <h2 class="section-title">Образование</h2>
+    <div class="education">
+        <p>@Education</p>
+    </div>
+
+    <h2 class="section-title">Сертификаты</h2>
+    <div class="certifications">
+        <p>@Certificates</p>
+    </div>
+</div>
+
+@code {
+    private string FullName = "Иван Иванов";
+    private string Email = "ivan.ivanov@example.com";
+    private string Phone = "+123456789";
+    private string LinkedIn = "https://linkedin.com/in/ivanivanov";
+    private string GitHub = "https://github.com/ivanivanov";
+    private string Position = "Full-Stack Developer | Backend Engineer | DevOps | Cybersecurity Specialist";
+    private string Summary = "Специалист с многолетним опытом в разработке веб, мобильных и десктопных приложений. Имею глубокие знания в бэкенд-разработке...";
+
+    private List<string> Skills = new List<string>
+    {
+        "Backend: C#, ASP.NET Core, Web API, ADO.NET",
+        "Desktop: WPF, WinForms",
+        "Mobile: Xamarin, MAUI",
+        "Web: Blazor, HTML5, CSS3",
+        "DevOps: Docker, Azure, CI/CD",
+        "Cybersecurity: OWASP, шифрование данных"
+    };
+
+
+    private string Education = "Название университета — Бакалавр по специальности IT, 2015 - 2019";
+    private string Certificates = "Microsoft Certified: Azure Developer Associate, CompTIA Security+";
+}
+
+@* В коде создаются переменные, в которых содержатся данные резюме, затем они отображаются на странице *@
